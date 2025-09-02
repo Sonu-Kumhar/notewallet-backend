@@ -60,6 +60,11 @@ const OtpVerificationSchema = new mongoose.Schema({
 
 const OtpVerification = mongoose.model('OtpVerification', OtpVerificationSchema);
 
+app.get('/ping', (req, res) => {
+  console.log('Ping received at', new Date().toLocaleTimeString());
+  res.send('pong');
+});
+
 // ================= Registration =================
 app.post('/register/send-otp', async (req, res) => {
   const { name, dob, email } = req.body;
